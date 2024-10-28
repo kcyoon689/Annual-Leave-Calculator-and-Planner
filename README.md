@@ -1,5 +1,5 @@
-# Annual Leave Calculator
-연차 계산기
+# Annual Leave Calculator/Planner
+연차 계산기/플래너
 
 
 The **Annual Leave Calculator** is a Python tool that helps calculate the remaining annual leave days for an employee. 
@@ -26,4 +26,4 @@ You can set up an initial leave count, specify an accrual day of the month, trac
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/username/annual-leave-calculator.git
+   git clone https://github.com/username/Annual-Leave-Calculator-and-Planner.git
