@@ -38,12 +38,22 @@ class AnnualLeaveCalculator:
 
 leave_calculator = AnnualLeaveCalculator(accrual_day=27, accrual_start_date_str="24-05-27")
 
-leave_calculator.add_used_leave('24-08-09', 0.5) 
-leave_calculator.add_used_leave('24-10-23', 0.5)
-leave_calculator.add_used_leave('24-11-15', 0.5)
-leave_calculator.add_used_leave('24-11-27', 1.0)
-leave_calculator.add_used_leave('24-12-01', 1.0)
-leave_calculator.add_used_leave('25-01-27', 1.0)
+# yy-mm-dd
+leave_schedule = [
+    ('24-08-09', 0.5),
+    ('24-10-23', 0.5),
+    ('24-11-08', 0.5),
+    ('24-11-15', 0.5),
+    ('24-11-20', 1.0),
+    ('24-11-26', 1.0),
+    ('24-12-01', 1.0),
+    ('25-01-27', 1.0)
+]
 
-remaining_leaves = leave_calculator.get_remaining_leaves('25-02-03')
-print(f"잔여 연차 개수: {remaining_leaves}개")
+for leaves in bulk_leaves:
+    leave_calculator.add_used_leave(*leaves)
+
+date_to_check = ['24-11-24', '24-11-26', '24-12-10', '24-12-27', '25-1-26', '25-1-27']
+for date in date_to_check:
+    remaining_leaves = leave_calculator.get_remaining_leaves(date)
+    print(f'{date} 기준 잔여 연차 개수: {remaining_leaves} 개')
