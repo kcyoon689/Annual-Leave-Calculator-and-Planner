@@ -1,8 +1,8 @@
 from datetime import datetime
 
 class AnnualLeaveCalculator:
-    def __init__(self, initial_leave_count=-1, accrual_day=27, accrual_start_date_str="24-01-01"):
-        self.initial_leave_count = initial_leave_count
+    def __init__(self, initial_leave_count=0, accrual_day=27, accrual_start_date_str="24-01-01"):
+        self.initial_leave_count = initial_leave_count-1
         self.accrual_day = accrual_day
         self.accrual_start_date = datetime.strptime(accrual_start_date_str, '%y-%m-%d')
         self.used_leaves = []
@@ -50,10 +50,10 @@ leave_schedule = [
     ('25-01-27', 1.0)
 ]
 
-for leaves in bulk_leaves:
+for leaves in leave_schedule:
     leave_calculator.add_used_leave(*leaves)
 
 date_to_check = ['24-11-24', '24-11-26', '24-12-10', '24-12-27', '25-1-26', '25-1-27']
 for date in date_to_check:
     remaining_leaves = leave_calculator.get_remaining_leaves(date)
-    print(f'{date} 기준 잔여 연차 개수: {remaining_leaves} 개')
+    print(f'{date} 기준 잔여 연차: {remaining_leaves} 개')
